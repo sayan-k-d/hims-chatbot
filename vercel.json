@@ -1,18 +1,12 @@
 {
-  "version": 2,
-  "framework": "vite",
+  "version": 3,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "builds": [
+  "routes": [{ "src": "/(.*)", "dest": "/$1" }],
+  "headers": [
     {
-      "src": "dist/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/$1"
+      "source": "/(.*)",
+      "headers": [{ "key": "Permissions-Policy", "value": "microphone=*" }]
     }
   ]
 }
